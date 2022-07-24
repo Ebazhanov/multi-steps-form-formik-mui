@@ -6,7 +6,7 @@ import MultiStepForm, { FormStep } from "./components/MultiStepForm";
 
 const validationSchemaStep1 = yup.object({
   name: yup.string().required("Name is required"),
-  email: yup.string().email("").required("Email is required"),
+  email: yup.string().email().required("Email is required"),
 });
 
 const validationSchemaStep2 = yup.object({

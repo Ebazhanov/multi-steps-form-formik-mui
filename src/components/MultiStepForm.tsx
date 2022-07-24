@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { Formik, FormikConfig, FormikHelpers, FormikValues } from "formik";
 import FormNavigation from "./FormNavigation";
+import { Step, StepLabel, Stepper } from "@mui/material";
 
 interface Props extends FormikConfig<FormikValues> {
   children: React.ReactNode;
@@ -53,6 +54,17 @@ const MultiStepForm: FC<Props> = ({ children, initialValues, onSubmit }) => {
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
+            <Stepper activeStep={stepNumber}>
+              {steps.map((currentStep) => {
+                const label = currentStep.props.stepName;
+                return (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+
             {step}
 
             <FormNavigation
